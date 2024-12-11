@@ -5,6 +5,7 @@ import Login from "../Pages/Auth/Login/Login";
 import Register from "../Pages/Auth/Register/Register";
 const routes = createBrowserRouter([
       {
+            errorElement: <h1>Page not found</h1>,
             path: '/',
             element: <Root></Root>,
             children: [
@@ -13,7 +14,7 @@ const routes = createBrowserRouter([
                         element: <Home></Home>
                   },
                   {
-                        path:'login',
+                        path: 'login',
                         element: <Login></Login>
                   },
                   {
