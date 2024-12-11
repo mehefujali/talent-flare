@@ -3,7 +3,7 @@ import Navbar from "../../components/Navbar/Navbar";
 
 const Root = () => {
       return (
-            <div className=" ">
+            <div className=" font-poppins">
                   <header>
                         <Navbar></Navbar>
                   </header>
