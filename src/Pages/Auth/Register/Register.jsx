@@ -42,15 +42,20 @@ const Register = () => {
             emailRegister(email,password)
             .then(data => {
                   updateUser({displayName : name})
+                 
+                  
                   setUser(data.user )
                   setUser({displayName:name})
+                  toast.success(`Welcome ${name}`)
                   
             
             })
       }
       const handleGoogleLogin = () => {
             googleSignIn()
-            .then(data => setUser(data.user))
+            .then(data => {setUser(data.user)
+                  toast.success("Goole login success")
+            })
       }
       if(user) {
             return <Navigate to={state||'/'}></Navigate>
