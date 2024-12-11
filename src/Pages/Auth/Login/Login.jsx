@@ -36,9 +36,9 @@ const Login = () => {
                                     </label>
                                     <input required placeholder="Enter email" type="submit" className="btn focus:outline-none bg-transparent hover:shadow-inner hover:border hover:border-indigo-500 hover:bg-transparent hover:border-l-4 border-indigo-500 shadow-inner text-indigo-600 shadow-indigo-200 border-l-4 focus:border-indigo-400" value="Login" />
                                     <Link className="text-indigo-500">Forget password ?</Link>
-                                    <div className="divider my-0 divider-primary"></div>
+                                    <div className="divider my-0 divider-primary">OR</div>
                                     <p className=" flex items-center gap-2 btn  bg-transparent border-indigo-500 hover:bg-transparent hover:shadow-inner hover:shadow-indigo-500"><FaGoogle></FaGoogle> Continue with Google</p>
-                                    <p className=" text-sm">Already have an account ? <Link className=" text-indigo-500" to="/register">Register</Link></p>
+                                    <p className=" text-sm">{`Don't have an account ? `}<Link className=" text-indigo-500" to="/register">Register</Link></p>
                               </form>
                              
                         </div>
