@@ -33,8 +33,8 @@ const Navbar = () => {
                                     <NavLink to={'/my-jobs'}>My job post</NavLink>
                               </div>
                               <div className="navbar-end gap-2">
-                                    <Link className=" underline font-semibold">Register</Link>
-                                    <Link className="btn rounded-md bg-indigo-500 text-white hover:bg-indigo-600">Login</Link>
+                                    <Link to="/register" className=" underline font-semibold">Register</Link>
+                                    <Link to="/login" className="btn rounded-md bg-indigo-500 text-white hover:bg-indigo-600">Login</Link>
                               </div>
                         </div>
                   </div>

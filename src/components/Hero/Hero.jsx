@@ -62,6 +62,9 @@ const Hero = () => {
 
 
                               </div>
+                              <div>
+                                    
+                              </div>
                         </div>
                         <div className=" lg:w-5/12  hidden sm:flex ">
                              <div className=" relative h-fit flex flex-wrap ">
