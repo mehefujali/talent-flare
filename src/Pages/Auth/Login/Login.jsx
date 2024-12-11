@@ -1,12 +1,15 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-import { useRef } from "react";
+import { useContext, useRef } from "react";
 import { FaGoogle } from "react-icons/fa";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../../context/AuthProvider";
 
 const Login = () => {
+      const {googleSignIn ,setUser , user} = useContext(AuthContext)
       const loginForm = useRef()
       const effect = useRef()
+
       useGSAP(()=>{
             gsap.from(loginForm.current , {
                   opacity:0 ,
@@ -24,6 +27,12 @@ const Login = () => {
                   ease: 'none',
             })
       })
+      const handleGoogleLogin = () => {
+            googleSignIn()
+            .then(data => setUser(data.user))
+      }
+      console.log(user);
+      
       return (
             <div >
                   <div className=" container mx-auto flex justify-center items-center h-[90vh] relative">
@@ -37,7 +46,7 @@ const Login = () => {
                                     <input required placeholder="Enter email" type="submit" className="btn focus:outline-none bg-transparent hover:shadow-inner hover:border hover:border-indigo-500 hover:bg-transparent hover:border-l-4 border-indigo-500 shadow-inner text-indigo-600 shadow-indigo-200 border-l-4 focus:border-indigo-400" value="Login" />
                                     <Link className="text-indigo-500">Forget password ?</Link>
                                     <div className="divider my-0 divider-primary">OR</div>
-                                    <p className=" flex items-center gap-2 btn  bg-transparent border-indigo-500 hover:bg-transparent hover:shadow-inner hover:shadow-indigo-500"><FaGoogle></FaGoogle> Continue with Google</p>
+                                    <p className=" flex items-center gap-2 btn  bg-transparent border-indigo-500 hover:bg-transparent hover:shadow-inner hover:shadow-indigo-500" onClick={handleGoogleLogin} ><FaGoogle></FaGoogle> Continue with Google</p>
                                     <p className=" text-sm">{`Don't have an account ? `}<Link className=" text-indigo-500" to="/register">Register</Link></p>
                               </form>
                              
