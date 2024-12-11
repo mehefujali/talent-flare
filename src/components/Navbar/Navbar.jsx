@@ -7,7 +7,7 @@ import { IoBagSharp, IoCheckmarkDoneSharp } from "react-icons/io5";
 
 
 const Navbar = () => {
-      const { user, setUser, signOutUser } = useContext(AuthContext)
+      const { user,  signOutUser } = useContext(AuthContext)
       return (
             <div>
                   <div className=" container mx-auto">

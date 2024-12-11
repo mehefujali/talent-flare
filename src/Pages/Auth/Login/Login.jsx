@@ -2,13 +2,14 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { useContext, useRef } from "react";
 import { FaGoogle } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
 
 const Login = () => {
       const {googleSignIn ,setUser , user} = useContext(AuthContext)
       const loginForm = useRef()
       const effect = useRef()
+      const {state} = useLocation()
 
       useGSAP(()=>{
             gsap.from(loginForm.current , {
@@ -31,7 +32,10 @@ const Login = () => {
             googleSignIn()
             .then(data => setUser(data.user))
       }
-      console.log(user);
+      
+      if(user) {
+            return <Navigate to={state||'/'}></Navigate>
+      }
       
       return (
             <div >
@@ -47,7 +51,7 @@ const Login = () => {
                                     <Link className="text-indigo-500">Forget password ?</Link>
                                     <div className="divider my-0 divider-primary">OR</div>
                                     <p className=" flex items-center gap-2 btn  bg-transparent border-indigo-500 hover:bg-transparent hover:shadow-inner hover:shadow-indigo-500" onClick={handleGoogleLogin} ><FaGoogle></FaGoogle> Continue with Google</p>
-                                    <p className=" text-sm">{`Don't have an account ? `}<Link className=" text-indigo-500" to="/register">Register</Link></p>
+                                    <p className=" text-sm">{`Don't have an account ? `}<Link state={state} className=" text-indigo-500" to="/register">Register</Link></p>
                               </form>
                              
                         </div>
