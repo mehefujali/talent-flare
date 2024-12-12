@@ -1,5 +1,6 @@
 
 import Hero from "../../components/Hero/Hero";
+import LatestJobs from "../../components/LatestJobs/LatestJobs";
 import './home.css'
 
 
@@ -14,7 +15,7 @@ const Home = () => {
                               <Hero></Hero>
                         </div>
                         <div>
-                              
+                              <LatestJobs></LatestJobs>
                         </div>
                   </div>
 

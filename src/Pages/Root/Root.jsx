@@ -1,7 +1,7 @@
 import { Outlet, useLocation } from "react-router-dom";
 import Navbar from "../../components/Navbar/Navbar";
 import { Toaster } from "react-hot-toast";
-
+import './root.css'
 const Root = () => {
       const {pathname} = useLocation()
       return (
