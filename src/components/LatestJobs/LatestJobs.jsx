@@ -1,18 +1,20 @@
 import { useEffect, useState } from "react";
 import Categories from "../Categories/Categories";
+import JobCard from "../JobCard/JobCard";
 
 
 const LatestJobs = () => {
       const [jobs , setJobs] = useState([])
       useEffect(()=>{
             fetch("http://localhost:8080/jobs")
-            .then(res => res.json)
+            .then(res => res.json())
             .then(data => setJobs(data))
-      })
-
+      },[])
+       console.log(jobs);
+       
       return (
             <div>
-                  <div className=" container mx-auto">
+                  <div className=" container mx-auto w-11/12 2xl:w-full">
 
                         <div>
                               <h1 className=" text-3xl font-bold">Latest Jobs Post</h1>
@@ -26,7 +28,11 @@ const LatestJobs = () => {
                               <Categories></Categories>
                         </div>
 
-                        <div>
+                        <div className=" mt-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12">
+
+                              {
+                                    jobs.map(job => <JobCard key={job._id} job={job}></JobCard> )
+                              }
 
                         </div>
                   </div>

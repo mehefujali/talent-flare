@@ -12,9 +12,9 @@ const Categories = () => {
       },[])
       return (
             <div>
-                  <div className=" flex gap-2">
+                  <div className=" flex gap-2 flex-wrap ">
                         {
-                              categories.map(catagory =>  <NavLink  className=" btn rounded-md btn-outline" key={catagory._id}>{catagory.name}</NavLink>)
+                              categories.map(catagory =>  <NavLink  className=" btn btn-sm md:btn-md rounded-md btn-outline" key={catagory._id}>{catagory.name}</NavLink>)
                         }
                   </div>
             </div>
