@@ -76,7 +76,7 @@ const Hero = () => {
                         </div>
                         <div className=" h-56 hidden sm:flex w-56 blur-3xl bg-indigo-500 absolute -z-50 right-8 opacity-60">  
                         </div>
-                        <div className=" top-16 hidden sm:flex left-1/3 h-56 w-56 blur-3xl bg-indigo-500 absolute -z-50  opacity-60">
+                        <div className="  fixed top-80 hidden sm:flex left-1/3 h-56 w-56 xl:h-60 xl:w-60 blur-3xl bg-indigo-500  -z-50  opacity-60">
                               
                         </div>
                   </div>

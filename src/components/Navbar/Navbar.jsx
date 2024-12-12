@@ -54,7 +54,7 @@ const Navbar = () => {
                                                       </div>
                                                       <ul
                                                             tabIndex={0}
-                                                            className="menu menu-sm dropdown-content rounded text-indigo-700 bg-indigo-500 bg-opacity-20 backdrop-blur-xl z-[1] mt-3 w-52 p-4 shadow-md shadow-indigo-400  font-semibold">
+                                                            className="menu menu-sm dropdown-content rounded text-indigo-700 bg-indigo-50   z-[1] mt-3 w-52 p-4 shadow-md shadow-indigo-400  font-semibold">
 
                                                             <Link className=" flex gap-1 items-center">
                                                                   <FaUserAlt></FaUserAlt>
