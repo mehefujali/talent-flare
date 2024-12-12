@@ -62,7 +62,7 @@ const Register = () => {
       }
       return (
             <div>
-                 <div className=" container mx-auto flex justify-center items-center h-[90vh] relative">
+                 <div className=" container mx-auto flex justify-center items-center min-h-[calc(100vh-340px)]  relative">
                         <div className=" w-fit relative">
                               <form onSubmit={handleEmailSignUp} ref={loginForm} action="" className="   text-black flex flex-col gap-3 p-8  rounded-lg shadow-lg shadow-indigo-300 backdrop-blur-2xl">
                                     <h1 className=" text-2xl font-bold text-center divider divider-primary text-indigo-600">Register</h1>

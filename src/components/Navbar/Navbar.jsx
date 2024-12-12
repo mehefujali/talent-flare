@@ -4,13 +4,13 @@ import { Link, NavLink } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import { FaGear } from "react-icons/fa6";
 import { IoBagSharp, IoCheckmarkDoneSharp } from "react-icons/io5";
-
+import './nav.css'
 
 const Navbar = () => {
-      
-      const { user,  signOutUser } = useContext(AuthContext)
-      
-      
+
+      const { user, signOutUser } = useContext(AuthContext)
+     
+
       return (
             <div className="">
                   <div className=" container mx-auto">
@@ -37,8 +37,8 @@ const Navbar = () => {
                               <div className="navbar-center hidden lg:flex gap-5">
                                     <NavLink to={'/'}> Home</NavLink>
                                     <NavLink to={'/jobs'}>All jobs</NavLink>
-                                    <NavLink to={'/application/me'}>My applications</NavLink>
-                                    <NavLink to={'/my-jobs'}>My job post</NavLink>
+                                    {user && <NavLink to={'/application/me'}>My applications</NavLink>}
+                                    {user && <NavLink to={'/my-jobs'}>My job post</NavLink>}
                               </div>
                               <div className="navbar-end gap-2">
                                     {
@@ -68,19 +68,19 @@ const Navbar = () => {
                                                             <NavLink className=" flex gap-1 items-center" to={'/jobs'}><IoBagSharp></IoBagSharp> All jobs</NavLink>
                                                             <div className="divider my-0"></div>
                                                             <NavLink className=" flex gap-1 items-center" to={'/application/me'}>
-                                                            <IoCheckmarkDoneSharp />
-                                                            My applications</NavLink>
+                                                                  <IoCheckmarkDoneSharp />
+                                                                  My applications</NavLink>
                                                             <div className="divider my-0"></div>
                                                             <NavLink className=" flex gap-1 items-center" to={'/my-jobs'}>
-                                                            <FaRegNewspaper />
-                                                            My job post</NavLink>
+                                                                  <FaRegNewspaper />
+                                                                  My job post</NavLink>
                                                             <div className="divider my-0"></div>
-                                                            <button onClick={()=> signOutUser()} className=" flex gap-1 items-center">
+                                                            <button onClick={() => signOutUser()} className=" flex gap-1 items-center">
                                                                   <FaSignOutAlt></FaSignOutAlt> Logout </button>
                                                       </ul>
                                                 </div>
                                           </div> : <div className=" flex gap-2 items-center">
-                                                <Link to="/register" className=" underline font-semibold">Register</Link>
+                                                <Link to="/register" className=" font-semibold">Register</Link>
                                                 <Link to="/login" className="btn rounded-md bg-indigo-500 text-white hover:bg-indigo-600">Login</Link>
                                           </div>
                                     }
