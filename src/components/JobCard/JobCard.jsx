@@ -25,7 +25,7 @@ const JobCard = ({ job }) => {
                                     <h3 className=" badge border-indigo-500">{jobType}</h3>
                               </div>
                               <p className=" flex gap-1 items-center"><BiCategory /> {category}</p>
-                              <div className=" flex items-center">
+                              <div className=" flex items-center gap-2">
                                     <p className=" flex gap-1 items-center"><SlCalender />{applicationDeadline}
                                     </p>
                                     <h4 className={` btn btn-xs ${status === "active" ? "bg-green-500" : "bg-red-500"} text-white `}>{status}</h4>
@@ -37,7 +37,7 @@ const JobCard = ({ job }) => {
                                     }
                               </div>
 
-                              <button className=" btn w-fit bg-indigo-500 text-white  mt-3 ">Apply</button>
+                              <button className=" btn w-fit bg-indigo-500 text-white hover:text-indigo-500  mt-3 ">Apply</button>
 
                         </div>
                   </div>
