@@ -54,7 +54,7 @@ const Register = () => {
       const handleGoogleLogin = () => {
             googleSignIn()
             .then(data => {setUser(data.user)
-                  toast.success("Goole login success")
+                  toast.success("Google login success")
             })
       }
       if(user) {
