@@ -3,6 +3,8 @@ import Root from "../Pages/Root/Root";
 import Home from "../Pages/Home/Home";
 import Login from "../Pages/Auth/Login/Login";
 import Register from "../Pages/Auth/Register/Register";
+import JobDetails from "../Pages/JobDetails/JobDetails";
+import PrivateRoute from "../Private/PrivateRoute";
 const routes = createBrowserRouter([
       {
             errorElement: <h1>Page not found</h1>,
@@ -20,6 +22,14 @@ const routes = createBrowserRouter([
                   {
                         path: 'register',
                         element: <Register></Register>
+                  },
+                  {
+                        path: 'jobdetails/:id',
+                        loader: ({ params }) => fetch(`http://localhost:8080/jobs/${params.id}`),
+                        element: <PrivateRoute>
+                              <JobDetails></JobDetails>
+                        </PrivateRoute>
+
                   }
             ]
       }

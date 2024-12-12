@@ -3,6 +3,7 @@ import { BiCategory } from "react-icons/bi";
 import { FaMoneyBill } from "react-icons/fa";
 import { IoLocationOutline } from "react-icons/io5";
 import { SlCalender } from "react-icons/sl";
+import { Link } from "react-router-dom";
 
 
 
@@ -10,7 +11,7 @@ import { SlCalender } from "react-icons/sl";
 
 
 const JobCard = ({ job }) => {
-      const { title, location, jobType, category, applicationDeadline, salaryRange, requirements, status, company_logo } = job
+      const { title, location, jobType, category, applicationDeadline, salaryRange, requirements, status, company_logo , _id } = job
       return (
             <div>
 
@@ -37,7 +38,7 @@ const JobCard = ({ job }) => {
                                     }
                               </div>
 
-                              <button className=" btn w-fit bg-indigo-500 text-white hover:text-indigo-500  mt-3 ">Apply</button>
+                              <Link to={`/jobdetails/${_id}`} className=" btn w-fit bg-indigo-500 text-white hover:text-indigo-500  mt-3 ">Apply</Link>
 
                         </div>
                   </div>
