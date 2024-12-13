@@ -4,14 +4,18 @@ import JobCard from "../JobCard/JobCard";
 
 
 const LatestJobs = () => {
-      const [jobs , setJobs] = useState([])
-      useEffect(()=>{
+      const [jobs, setJobs] = useState([])
+      useEffect(() => {
             fetch("http://localhost:8080/jobs")
-            .then(res => res.json())
-            .then(data => setJobs(data))
-      },[])
-       console.log(jobs);
-       
+                  .then(res => res.json())
+                  .then(data => setJobs(data))
+      }, [])
+      const handleFilterByCategory = (category) => {
+            fetch(`http://localhost:8080/jobs?category=${category}`)
+                  .then(res => res.json())
+                  .then(data => setJobs(data))
+      }
+
       return (
             <div>
                   <div className=" container mx-auto w-11/12 2xl:w-full">
@@ -25,13 +29,13 @@ const LatestJobs = () => {
                         </div>
 
                         <div className=" my-4">
-                              <Categories></Categories>
+                              <Categories handleFilterByCategory={handleFilterByCategory}></Categories>
                         </div>
 
                         <div className=" mt-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12">
 
                               {
-                                    jobs.map(job => <JobCard key={job._id} job={job}></JobCard> )
+                                    jobs.map(job => <JobCard key={job._id} job={job}></JobCard>)
                               }
 
                         </div>

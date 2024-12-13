@@ -1,7 +1,8 @@
+import PropTypes from "prop-types";
 import { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
 
-const Categories = () => {
+
+const Categories = ({handleFilterByCategory}) => {
       const [categories , setCategories] = useState([])
       useEffect(()=>{
         fetch('http://localhost:8080/categories')
@@ -14,11 +15,13 @@ const Categories = () => {
             <div>
                   <div className=" flex gap-2 flex-wrap ">
                         {
-                              categories.map(catagory =>  <Link  className=" btn btn-sm md:btn-md rounded-md btn-outline" key={catagory._id}>{catagory.name}</Link>)
+                              categories.map(catagory =>  <button onClick={()=>handleFilterByCategory(catagory.name)}  className=" btn btn-sm md:btn-md rounded-md btn-outline" key={catagory._id}>{catagory.name}</button>)
                         }
                   </div>
             </div>
       );
 };
-
+Categories.propTypes ={
+      handleFilterByCategory: PropTypes.func.isRequired
+}
 export default Categories;
