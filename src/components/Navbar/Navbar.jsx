@@ -22,7 +22,7 @@ const Navbar = () => {
                                           </div>
                                           <ul
                                                 tabIndex={0}
-                                                className="menu menu-sm dropdown-content backdrop:blur-xl text-nowrap rounded w-fit z-[1] mt-3  p-3 bg-indigo-500 bg-opacity-25 shadow flex-col gap-2">
+                                                className="menu menu-sm bg-white dropdown-content backdrop:blur-xl text-nowrap rounded w-fit z-[1] mt-3  p-3   shadow-md shadow-indigo-200 flex-col gap-2">
                                                 <NavLink to={'/'}>Home</NavLink>
                                                 <NavLink to={'/jobs'}>All jobs</NavLink>
                                                 <NavLink to={'/application/me'}>My applications</NavLink>

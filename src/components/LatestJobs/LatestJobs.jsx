@@ -37,7 +37,8 @@ const LatestJobs = () => {
 
                                     <div className=" w-fit flex justify-center items-center flex-col ">
                                           <img className=" h-20 opacity-35" src="https://cdn-icons-png.flaticon.com/512/71/71200.png" alt="" />
-                                          <h1 className=" text-center text-2xl text-gray-400">No job available on this category</h1>
+                                          <h1 className=" text-center md:text-2xl text-gray-400">No jobs available in this category at the moment</h1>
+
                                     </div>
                               </div> : <div className=" mt-16 grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-12">
 

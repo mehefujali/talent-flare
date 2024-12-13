@@ -76,7 +76,7 @@ const Hero = () => {
                               <h1  className=" text-3xl md:text-4xl xl:text-5xl font-bold">Find Your Dream Job with Talent<span className=" text-indigo-500 font-normal">Flare</span></h1>
                               <p  className="  banner-text">Explore thousands of job opportunities, connect with top employers, and take your career to the next level.</p>
                               <div  className="  banner-text flex items-center gap-2">
-                                    <Link className=" btn rounded-md btn-outline border-indigo-500 hover:bg-indigo-100 border-2 text-indigo-500 hover:text-indigo-500"><PiHandbagBold className=" text-xl"></PiHandbagBold> Explore Jobs</Link>
+                                    <Link to={'/jobs'} className=" btn rounded-md btn-outline border-indigo-500 hover:bg-indigo-100 border-2 text-indigo-500 hover:text-indigo-500"><PiHandbagBold className=" text-xl"></PiHandbagBold> Explore Jobs</Link>
                                     {user ? <Link to={'/application/me'} className=" btn rounded-md  bg-indigo-500 hover:bg-indigo-600  text-white hover:text-white"> <IoCheckmarkDoneSharp></IoCheckmarkDoneSharp>My Applications</Link> : <Link to="/register" className=" btn rounded-md  bg-indigo-500 hover:bg-indigo-600  text-white hover:text-white"><CiLogin className=" text-xl font-bold"></CiLogin> Sign Up Now</Link>}
 
 
