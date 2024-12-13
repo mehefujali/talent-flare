@@ -1,5 +1,5 @@
 import { BiCategory } from "react-icons/bi";
-import { FaMoneyBill, FaUserTie } from "react-icons/fa";
+import { FaMoneyBill } from "react-icons/fa";
 import { IoBag, IoLocationOutline } from "react-icons/io5";
 import { MdDone } from "react-icons/md";
 
@@ -15,7 +15,7 @@ const JobDetails = () => {
             <div>
                   <ScrollRestoration></ScrollRestoration>
                   <div className=" container mx-auto">
-                        <div className=" md:w-9/12 lg:w-8/12 2xl:w-6/12 mx-auto mt-20">
+                        <div className=" md:w-9/12 lg:w-8/12 2xl:w-6/12 mx-auto mt-20 p-6 border rounded-lg shadow-md shadow-indigo-200">
                               <div className=" flex justify-between items-start">
                                     <div>
                                           <h1 className=" text-xl md:text-2xl xl:text-3xl font-bold">{title}</h1>

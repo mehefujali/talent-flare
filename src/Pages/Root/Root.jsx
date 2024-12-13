@@ -8,7 +8,7 @@ const Root = () => {
       return (
             <div className=" font-poppins ">
 
-                  <header className={` ${pathname === "/" ? "bg-indigo-200 bg-opacity-30 backdrop-blur-md" : "bg-transparent"} sticky top-0 z-[999]`}>
+                  <header className={` ${pathname === "/" ? "bg-indigo-200 " : "bg-transparent"} bg-opacity-30 backdrop-blur-md sticky top-0 z-[999]`}>
                         <Toaster />
                         <Navbar></Navbar>
                   </header>
