@@ -1,13 +1,16 @@
 
+import { useContext } from "react";
 import CreateProfile from "../../components/CreateProfile/CreateProfile";
 import Hero from "../../components/Hero/Hero";
 import LatestJobs from "../../components/LatestJobs/LatestJobs";
 import './home.css'
+import { AuthContext } from "../../context/AuthProvider";
+import StatsCounterSection from "../../components/StatsCounterSection/StatsCounterSection";
 
 
 const Home = () => {
 
-
+const {user} = useContext(AuthContext)
 
       return (
             <div>
@@ -16,10 +19,13 @@ const Home = () => {
                               <Hero></Hero>
                         </div>
                         <div>
+                              <StatsCounterSection></StatsCounterSection>
+                        </div>
+                        <div>
                               <LatestJobs></LatestJobs>
                         </div>
                         <div className=" my-14">
-                            <CreateProfile></CreateProfile>  
+                            {!user&&<CreateProfile></CreateProfile>}  
                         </div>
                   </div>
 
