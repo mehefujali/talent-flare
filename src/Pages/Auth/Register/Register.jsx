@@ -11,6 +11,7 @@ const Register = () => {
       const loginForm = useRef()
       const effect = useRef()
       const {state} = useLocation()
+
       useGSAP(()=>{
             gsap.from(loginForm.current , {
                   opacity:0 ,
@@ -34,6 +35,7 @@ const Register = () => {
             const email = form.email.value 
             const password = form.password.value 
             const name = form.name.value 
+            const date = new Date()
             if(password.length < 6) {
                   toast.error("Password Must Be at Least 6 Characters")
                   
@@ -46,7 +48,21 @@ const Register = () => {
                   
                   setUser(data.user )
                   setUser({displayName:name})
-                  toast.success(`Welcome ${name}`)
+                  fetch(`${import.meta.env.VITE_URL}/users` , {
+                        method:"POST" ,
+                        headers :{
+                             'Content-Type': 'application/json'
+                        } ,
+                        body : JSON.stringify({name,email,date})
+                  })
+                  .then (res => res.json()).then(() => {
+                        
+                        
+                        toast.success(`Welcome ${name}`)
+                  })
+
+                  
+                  
                   
             
             })

@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 const Categories = ({handleFilterByCategory}) => {
       const [categories , setCategories] = useState([])
       useEffect(()=>{
-        fetch('http://localhost:8080/categories')
+        fetch(`${import.meta.env.VITE_URL}/categories`)
         .then(res => res.json())
         .then(data => {
             setCategories(data)

@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Jobs = () => {
       const [jobs, setJobs] = useState([])
       useEffect(() => {
-            fetch("http://localhost:8080/jobs")
+            fetch(`${import.meta.env.VITE_URL}/jobs`)
                   .then(res => res.json())
                   .then(data => setJobs(data))
       }, [])
@@ -30,7 +30,7 @@ const Jobs = () => {
 
                                           </tr>
                                     </thead>
-                                    <tbody>
+                                    <tbody className=" flex-col-reverse">
                                           {/* row 1 */}
                                           {
                                                 jobs.map((job, idx) => <tr key={idx} >

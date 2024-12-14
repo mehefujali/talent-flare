@@ -6,12 +6,12 @@ import JobCard from "../JobCard/JobCard";
 const LatestJobs = () => {
       const [jobs, setJobs] = useState([])
       useEffect(() => {
-            fetch("http://localhost:8080/jobs")
+            fetch(`${import.meta.env.VITE_URL}/jobs`)
                   .then(res => res.json())
                   .then(data => setJobs(data))
       }, [])
       const handleFilterByCategory = (category) => {
-            fetch(`http://localhost:8080/jobs?category=${category}`)
+            fetch(`${import.meta.env.VITE_URL}/jobs?category=${category}`)
                   .then(res => res.json())
                   .then(data => setJobs(data))
       }
