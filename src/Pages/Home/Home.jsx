@@ -1,4 +1,5 @@
 
+import CreateProfile from "../../components/CreateProfile/CreateProfile";
 import Hero from "../../components/Hero/Hero";
 import LatestJobs from "../../components/LatestJobs/LatestJobs";
 import './home.css'
@@ -16,6 +17,9 @@ const Home = () => {
                         </div>
                         <div>
                               <LatestJobs></LatestJobs>
+                        </div>
+                        <div className=" my-14">
+                            <CreateProfile></CreateProfile>  
                         </div>
                   </div>
 

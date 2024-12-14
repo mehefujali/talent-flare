@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 const Jobs = () => {
       const [jobs, setJobs] = useState([])
       useEffect(() => {
-            fetch(`${import.meta.env.VITE_URL}/jobs`)
+            fetch(`${import.meta.env.VITE_URL}/alljobs`)
                   .then(res => res.json())
                   .then(data => setJobs(data))
       }, [])
