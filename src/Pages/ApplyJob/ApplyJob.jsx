@@ -1,18 +1,19 @@
 import { useContext } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import Swal from "sweetalert2";
 
 const ApplyJob = () => {
       const { user } = useContext(AuthContext)
       const { id } = useParams()
+      const navigate = useNavigate()
       const handleApplyJob = e => {
             e.preventDefault()
             const form = e.target
             const linkedinURL = form.linkedinurl.value
             const resume = form.resume.value
             const comment = form.comment.value
-
+            
             const jobApplication = {
                   job_id: id,
                   applicantEmail: user.email,
@@ -38,7 +39,7 @@ const ApplyJob = () => {
                                     timer: 1500
                               });
 
-                              form.reset()
+                              navigate('/application/me')
                         }
 
                   })

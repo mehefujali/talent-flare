@@ -47,7 +47,7 @@ const Jobs = () => {
                                                                   </div>
                                                                   <div>
                                                                         <div className="font-bold">{job.title}</div>
-                                                                        <div className="text-sm  "><h4 className={` ${job.status === "active" ? "text-green-500" : "text-red-500"} text-white `}>{job.status}</h4></div>
+                                                                        <div className="text-sm  "><h4 className={` ${job.status === "active" ? "text-green-500" : "text-red-500"}  `}>{job.status}</h4></div>
                                                                   </div>
                                                             </div>
                                                       </td>
