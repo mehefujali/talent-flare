@@ -4,12 +4,12 @@ import { IoBag, IoLocationOutline } from "react-icons/io5";
 import { MdDone } from "react-icons/md";
 
 import { SlCalender } from "react-icons/sl";
-import { ScrollRestoration, useLoaderData } from "react-router-dom";
+import { Link, ScrollRestoration, useLoaderData } from "react-router-dom";
 
 
 const JobDetails = () => {
       const job = useLoaderData()
-      const { title, location, jobType, category, applicationDeadline, salaryRange, requirements, status, company_logo, description, responsibilities } = job
+      const { title, location, jobType, category, applicationDeadline, salaryRange, requirements, status, company_logo, description, responsibilities ,_id} = job
 
       return (
             <div>
@@ -47,7 +47,7 @@ const JobDetails = () => {
                                     <p>{description}</p>
 
                               </div>
-                              <button className=" btn bg-indigo-500 w-full mt-5 hover:text-indigo-500 text-white rounded-md"><MdDone className=""></MdDone> Apply</button>
+                              <Link to={`/applyjob/${_id}`} className=" btn bg-indigo-500 w-full mt-5 hover:text-indigo-500 text-white rounded-md"><MdDone className=""></MdDone> Apply</Link>
                         </div>
                   </div>
             </div>
