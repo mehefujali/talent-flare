@@ -1,15 +1,27 @@
+import { useContext, useEffect, useState } from "react";
 import { BiCategory } from "react-icons/bi";
 import { FaMoneyBill } from "react-icons/fa";
 import { IoBag, IoLocationOutline } from "react-icons/io5";
 import { MdDone } from "react-icons/md";
 
 import { SlCalender } from "react-icons/sl";
-import { Link, ScrollRestoration, useLoaderData } from "react-router-dom";
+import {  ScrollRestoration, useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { AuthContext } from "../../context/AuthProvider";
 
 
 const JobDetails = () => {
+      const [application, setApplication] = useState([])
+      const { user } = useContext(AuthContext)
+      const { id } = useParams()
+      const navigate = useNavigate()
+      useEffect(() => {
+            fetch(`${import.meta.env.VITE_URL}/myapplication?email=${user.email}`)
+                  .then(res => res.json())
+                  .then(data => setApplication(data))
+      })
+      const userJob = application.find(job => job.job_id === id)
       const job = useLoaderData()
-      const { title, location, jobType, category, applicationDeadline, salaryRange, requirements, status, company_logo, description, responsibilities ,_id} = job
+      const { title, location, jobType, category, applicationDeadline, salaryRange, requirements, status, company_logo, description, responsibilities, _id } = job
 
       return (
             <div>
@@ -47,10 +59,10 @@ const JobDetails = () => {
                                     <p>{description}</p>
 
                               </div>
-                              <Link to={`/applyjob/${_id}`} className=" btn bg-indigo-500 w-full mt-5 hover:text-indigo-500 text-white rounded-md"><MdDone className=""></MdDone> Apply</Link>
-                        </div>
+                              <button onClick={()=>navigate(`/applyjob/${_id}`)}  disabled={userJob}  to={`/applyjob/${_id}`} className=" btn bg-indigo-500 w-full mt-5 hover:text-indigo-500 text-white rounded-md"><MdDone className=""></MdDone> {userJob? "Job Already Applied":"Apply"}</button>
                   </div>
             </div>
+            </div >
       );
 };
 
