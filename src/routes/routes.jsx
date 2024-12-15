@@ -7,6 +7,7 @@ import JobDetails from "../Pages/JobDetails/JobDetails";
 import PrivateRoute from "../Private/PrivateRoute";
 import Jobs from "../Pages/Jobs/Jobs";
 import ApplyJob from "../Pages/ApplyJob/ApplyJob";
+import ApplicationMe from "../Pages/ApplicationMe/ApplicationMe";
 const routes = createBrowserRouter([
       {
             errorElement: <h1>Page not found</h1>,
@@ -40,6 +41,12 @@ const routes = createBrowserRouter([
                   {
                         path: 'applyjob/:id',
                         element: <PrivateRoute><ApplyJob></ApplyJob></PrivateRoute>
+                  },
+                  {
+                        path: 'application/me',
+                        element: <PrivateRoute>
+                              <ApplicationMe></ApplicationMe>
+                        </PrivateRoute>
                   }
             ]
       }
