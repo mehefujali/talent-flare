@@ -59,7 +59,14 @@ const JobDetails = () => {
                                     <p>{description}</p>
 
                               </div>
-                              <button onClick={()=>navigate(`/applyjob/${_id}`)}  disabled={userJob}  to={`/applyjob/${_id}`} className=" btn bg-indigo-500 w-full mt-5 hover:text-indigo-500 text-white rounded-md"><MdDone className=""></MdDone> {userJob? "Job Already Applied":"Apply"}</button>
+                              {userJob&&<div className=" ">
+                                    <div className="divider">Your Application</div>
+                                    <p className="text-black">linkedinURL: <a className=" underline" href={userJob.linkedinURL}>{userJob.linkedinURL}</a></p>
+                                    <p className="text-black">Resume: <a className=" underline" href={userJob.resume}>{userJob.resume}</a></p>
+                                    <p className="text-black">Comment : {userJob.comment}</p>
+                                    </div>}
+                              {userJob?<button onClick={()=>navigate(`/application/me`)}   to={`/applyjob/${_id}`} className=" btn bg-indigo-500 w-full mt-5 hover:text-indigo-500 text-white rounded-md"><MdDone className=""></MdDone> {"Go to my Application"}</button>:
+                              <button onClick={()=>navigate(`/applyjob/${_id}`)}   to={`/applyjob/${_id}`} className=" btn bg-indigo-500 w-full mt-5 hover:text-indigo-500 text-white rounded-md"><MdDone className=""></MdDone> {"Apply"}</button>}
                   </div>
             </div>
             </div >
