@@ -13,7 +13,7 @@ const ApplyJob = () => {
             const linkedinURL = form.linkedinurl.value
             const resume = form.resume.value
             const comment = form.comment.value
-            
+
             const jobApplication = {
                   job_id: id,
                   applicantEmail: user.email,
@@ -39,6 +39,15 @@ const ApplyJob = () => {
                                     timer: 1500
                               });
 
+                              navigate('/application/me')
+                        }
+                        else {
+                              Swal.fire({
+                                    icon: "error",
+
+                                    text: "You’ve Already Applied!",
+
+                              });
                               navigate('/application/me')
                         }
 
