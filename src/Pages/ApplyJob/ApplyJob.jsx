@@ -9,12 +9,13 @@ const ApplyJob = () => {
                               <h1 className=" text-xl md:text-2xl lg:text-3xl font-bold">Apply for Your Dream Job</h1>
                               <p>We’re looking for passionate individuals to join our growing team. Discover exciting opportunities and make an impact with us!</p>
                         </div>
-                        <div className=" flex  gap-5 p-8  rounded-lg shadow-lg shadow-indigo-300 backdrop-blur-2xl">
+                       
+                        <div className=" flex flex-col md:flex-row  gap-5 p-8  rounded-lg shadow-lg shadow-indigo-300 backdrop-blur-2xl">
                               <div>
                                     <img src="https://cdni.iconscout.com/illustration/premium/thumb/online-job-application-illustration-download-in-svg-png-gif-file-formats--portal-apply-cv-resume-business-people-pack-illustrations-4609375.png?f=webp" alt="" />
                               </div>
                               <form action="" className=" w-full   text-black flex flex-col gap-3 ">
-                                    <h1 className=" text-2xl font-bold text-center divider divider-primary text-indigo-600">Apply</h1>
+                                    
                                     <input name="linkedinurl" required placeholder="Enter linkedin URL" type="url" className="input focus:outline-none border-indigo-500 shadow-inner shadow-indigo-200 border-l-4 focus:border-indigo-400 bg-transparent" />
                                     <input name="resume" required placeholder="Enter resume URL (Google drive)" type="url" className="input focus:outline-none border-indigo-500 shadow-inner shadow-indigo-200 border-l-4 focus:border-indigo-400 bg-transparent" />
 
