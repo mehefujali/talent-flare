@@ -6,6 +6,7 @@ import LatestJobs from "../../components/LatestJobs/LatestJobs";
 import './home.css'
 import { AuthContext } from "../../context/AuthProvider";
 import StatsCounterSection from "../../components/StatsCounterSection/StatsCounterSection";
+import Newslatter from "../../components/Newslatter/Newslatter";
 
 
 const Home = () => {
@@ -26,6 +27,9 @@ const {user} = useContext(AuthContext)
                         </div>
                         <div className=" my-14">
                             {!user&&<CreateProfile></CreateProfile>}  
+                        </div>
+                        <div>
+                              <Newslatter></Newslatter>
                         </div>
                   </div>
 

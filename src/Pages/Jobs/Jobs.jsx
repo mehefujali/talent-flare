@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { IoLocationOutline } from "react-icons/io5";
-import { Link } from "react-router-dom";
+import { Link, ScrollRestoration } from "react-router-dom";
 
 // const { title, location, jobType, category, applicationDeadline, salaryRange, requirements, status, company_logo , _id } = job
 
@@ -13,6 +13,7 @@ const Jobs = () => {
       }, [])
       return (
             <div>
+                  <ScrollRestoration></ScrollRestoration>
                   <div className="container mx-auto">
                         <div className=" my-12">
                               <h1 className=" text-xl md:text-2xl xl:text-4xl text-center font-bold divider divider-primary">Browse All Jobs</h1>
