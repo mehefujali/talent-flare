@@ -11,7 +11,7 @@ import { Link } from "react-router-dom";
 
 
 const JobCard = ({ job }) => {
-      const { title, location, jobType, category, applicationDeadline, salaryRange, requirements, status, company_logo , _id } = job
+      const { title, location, jobType, category, applicationDeadline, salaryRange, requirements, status, company_logo, _id } = job
       return (
             <div>
 
@@ -19,7 +19,7 @@ const JobCard = ({ job }) => {
                         <div>
                               <img className=" h-14 w-14 object-contain" src={company_logo} alt="" />
                         </div>
-                        <div  className="w-full h-full flex flex-col gap-1 justify-between">
+                        <div className="w-full h-full flex flex-col gap-1 justify-between">
                               <h1 className=" text-xl font-bold">{title}</h1>
                               <div className=" flex gap-2 items-center">
                                     <h3 className=" flex gap-1 items-center"><IoLocationOutline /> {location}</h3>
@@ -38,7 +38,9 @@ const JobCard = ({ job }) => {
                                     }
                               </div>
 
-                              <Link to={`/jobdetails/${_id}`} className=" btn w-fit bg-indigo-500 text-white hover:text-indigo-500  mt-3 ">Apply</Link>
+                              <div className=" h-full flex">
+                                    <Link to={`/jobdetails/${_id}`} className=" btn w-fit bg-indigo-500 text-white hover:text-indigo-500  mt-3 ">Details</Link>
+                              </div>
 
                         </div>
                   </div>

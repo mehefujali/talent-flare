@@ -11,13 +11,15 @@ import { AuthContext } from "../../context/AuthProvider";
 
 const JobDetails = () => {
       const [application, setApplication] = useState([])
-      const { user } = useContext(AuthContext)
+      const { user,setLoding } = useContext(AuthContext)
       const { id } = useParams()
       const navigate = useNavigate()
       useEffect(() => {
+            setLoding(true)
             fetch(`${import.meta.env.VITE_URL}/myapplication?email=${user.email}`)
                   .then(res => res.json())
                   .then(data => setApplication(data))
+                  setLoding(false)
       })
       const userJob = application.find(job => job.job_id === id)
       const job = useLoaderData()

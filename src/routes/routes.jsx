@@ -35,8 +35,10 @@ const routes = createBrowserRouter([
 
                   },
                   {
-                        path : 'jobs' ,
-                        element : <Jobs></Jobs>
+                        path: 'jobs',
+                        element: <PrivateRoute>
+                              <Jobs></Jobs>
+                        </PrivateRoute>
                   },
                   {
                         path: 'applyjob/:id',

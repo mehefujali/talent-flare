@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
-import { IoLocationOutline } from "react-icons/io5";
-import { Link, ScrollRestoration } from "react-router-dom";
+
+import {  ScrollRestoration } from "react-router-dom";
+import JobCard from "../../components/JobCard/JobCard";
 
 // const { title, location, jobType, category, applicationDeadline, salaryRange, requirements, status, company_logo , _id } = job
 
@@ -14,60 +15,73 @@ const Jobs = () => {
       return (
             <div>
                   <ScrollRestoration></ScrollRestoration>
-                  <div className="container mx-auto">
-                        <div className=" my-12">
+                  <div className="container mx-auto w-11/12 xl:w-full">
+                        <div className=" h-full my-12">
                               <h1 className=" text-xl md:text-2xl xl:text-4xl text-center font-bold divider divider-primary">Browse All Jobs</h1>
                         </div>
-                        <div className="overflow-x-auto">
-                              <table className="table">
-                                    {/* head */}
-                                    <thead>
+                        <div className=" h-full lg:grid grid-cols-12 flex flex-col-reverse gap-4 2xl:gap-6 xl:gap-5">
+                              <div className=" col-span-12  lg:col-span-3  2xl:col-span-2 ">
+                                    <div>
+                                          <div>
+                                                <h4>Advance Filter</h4>
+                                          </div>
+                                    </div>
+                                    <div className="divider my-3 mt-5 py-0"></div>
+                                    <div>
+                                          <div>
+                                                <h1 className=" text-2xl font-bold">Job type</h1>
+                                                <div className=" mt-7 space-y-2">
+                                                      <label htmlFor="" className="  flex items-center gap-2 "><input className=" checkbox-sm checkbox rounded-md checkbox-primary" type="checkbox" name="" id="" /> Full time</label>
+                                                      <label htmlFor="" className="  flex items-center gap-2 "><input className=" checkbox-sm checkbox rounded-md checkbox-primary" type="checkbox" name="" id="" /> Part time</label>
+                                                      <label htmlFor="" className="  flex items-center gap-2 "><input className=" checkbox-sm checkbox rounded-md checkbox-primary" type="checkbox" name="" id="" />Hybrid</label>
+                                                      <label htmlFor="" className="  flex items-center gap-2 "><input className=" checkbox-sm checkbox rounded-md checkbox-primary" type="checkbox" name="" id="" />Remote</label>
+                                                      <label htmlFor="" className="  flex items-center gap-2 "><input className=" checkbox-sm checkbox rounded-md checkbox-primary" type="checkbox" name="" id="" />Intern</label>
+                                                </div>
+                                          </div>
 
-                                          <tr className=" text-lg justify-between">
+                                          <div className="divider"></div>
 
-                                                <th>Job</th>
-                                                <th className=" hidden md:flex  items-center gap-1"><IoLocationOutline /> Location</th>
-                                                <th className="">Deadline</th>
+                                          <div>
+                                                <h1 className=" text-2xl font-bold">SalaryRange</h1>
 
-                                          </tr>
-                                    </thead>
-                                    <tbody className=" flex-col-reverse">
-                                          {/* row 1 */}
+                                                <div className=" border-b-2  mt-16 flex justify-between items-center">
+                                                 <h1>$0</h1>
+                                                 <h1>$5000</h1>
+                                                </div>
+                                                <div className=" mt-7 space-y-2">
+                                                      <label htmlFor="" className="  flex items-center gap-2 "><input className=" checkbox-sm checkbox rounded-md checkbox-primary" type="checkbox" name="" id="" /> All</label>
+                                                      <label htmlFor="" className="  flex items-center gap-2 "><input className=" checkbox-sm checkbox rounded-md checkbox-primary" type="checkbox" name="" id="" /> $0 - $20k</label>
+                                                      <label htmlFor="" className="  flex items-center gap-2 "><input className=" checkbox-sm checkbox rounded-md checkbox-primary" type="checkbox" name="" id="" /> $20k - $40k</label>
+                                                      <label htmlFor="" className="  flex items-center gap-2 "><input className=" checkbox-sm checkbox rounded-md checkbox-primary" type="checkbox" name="" id="" />$40k - $60k</label>
+                                                      <label htmlFor="" className="  flex items-center gap-2 "><input className=" checkbox-sm checkbox rounded-md checkbox-primary" type="checkbox" name="" id="" />$60k - $80k</label>
+                                                      <label htmlFor="" className="  flex items-center gap-2 "><input className=" checkbox-sm checkbox rounded-md checkbox-primary" type="checkbox" name="" id="" />$80k - $100k</label>
+                                                </div>
+                                          </div>
+                                    </div>
+                              </div>
+                              <div className=" col-span-12 lg:col-span-9  2xl:col-span-10">
+                                    <div className=" flex justify-between items-center">
+                                          <div>
+                                                <h4>All jobs</h4>
+                                          </div>
+                                          <div>
+                                                <label className=" text-sm border rounded-md p-2" htmlFor="">Shortby :
+                                                      <select name="" id="" className=" select select-sm  focus:border-none focus:outline-none">
+                                                            <option value="newpost">New post</option>
+                                                            <option value="newpost">Old post</option>
+                                                      </select>
+                                                </label>
+                                          </div>
+                                    </div>
+                                    <div className="divider my-3 py-0"></div>
+                                    <div className=" grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5">
                                           {
-                                                jobs.map((job, idx) => <tr key={idx} >
-
-                                                      <td>
-                                                            <div className="flex items-center gap-3">
-                                                                  <div className="avatar">
-                                                                        <div className="mask mask-squircle h-12 w-12">
-                                                                              <img
-                                                                                    src={job.company_logo}
-                                                                                    alt="Avatar Tailwind CSS Component" />
-                                                                        </div>
-                                                                  </div>
-                                                                  <div>
-                                                                        <div className="font-bold">{job.title}</div>
-                                                                        <div className="text-sm  "><h4 className={` ${job.status === "active" ? "text-green-500" : "text-red-500"}  `}>{job.status}</h4></div>
-                                                                  </div>
-                                                            </div>
-                                                      </td>
-                                                      <td className=" hidden md:block">
-                                                            {job.location}
-                                                            <br />
-                                                            <span className="badge badge-ghost badge-sm">{job.jobType}</span>
-                                                      </td>
-                                                      <td>{job.applicationDeadline}</td>
-                                                      <th>
-                                                            <Link to={`/jobdetails/${job._id}`} className="btn btn-ghost btn-xs">details</Link>
-                                                      </th>
-                                                </tr>)
+                                                jobs.map(job => <JobCard key={job._id} job={job}></JobCard>)
                                           }
-
-                                    </tbody>
-
-
-                              </table>
-                        </div></div>
+                                    </div>
+                              </div>
+                        </div>
+                  </div>
             </div>
       );
 };

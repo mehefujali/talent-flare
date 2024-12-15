@@ -13,6 +13,9 @@ const ApplicationMe = () => {
       return (
             <div>
                   <div className="container mx-auto">
+                  <div className=" my-12">
+                              <h1 className=" text-xl md:text-2xl xl:text-4xl text-center font-bold divider divider-primary">My applications</h1>
+                        </div>
                         <div className="overflow-x-auto">
                               <table className="table">
                                     {/* head */}
