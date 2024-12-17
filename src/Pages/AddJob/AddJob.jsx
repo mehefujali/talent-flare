@@ -1,20 +1,34 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
+import Swal from "sweetalert2";
 
 
 const AddJob = () => {
-      const handleAddJob =e => {
+      const navigate = useNavigate()
+      const handleAddJob = e => {
             e.preventDefault()
             const formData = new FormData(e.target)
-            
+
             const initialData = Object.fromEntries(formData.entries())
-            const {min , max , currency , ...newJob} = initialData
-            newJob.salaryRange = {min , max , currency}
-            console.log(newJob)
+            const { min, max, currency, ...newJob } = initialData
+            newJob.salaryRange = { min, max, currency }
+
             newJob.requirements = newJob.requirements.split('/n')
             newJob.responsibilities = newJob.responsibilities.split('/n')
-            axios.post(`${import.meta.env.VITE_URL}/addjobs` , newJob )
-            .then(res => {
-                  console.log(res.data);
+            newJob.status = 'active'
+
+            axios.post(`${import.meta.env.VITE_URL}/addjobs`, newJob)
+                  .then(res => {
+                        if (res.data.insertedId){
+                              Swal.fire({
+                                    position: "center",
+                                    icon: "success",
+                                    title: "New job added",
+                                    showConfirmButton: false,
+                                    timer: 1500
+                                  });
+                                navigate('/my-jobs')
+                        }
                   
             })
 
@@ -22,8 +36,8 @@ const AddJob = () => {
       return (
             <div>
                   <div className="container mx-auto">
-                        <form onSubmit={handleAddJob}  className="text-black grid grid-cols-1 lg:grid-cols-12  gap-4 p-8 rounded-lg shadow-lg shadow-indigo-300 backdrop-blur-2xl">
-                              <h1 className="col-span-full text-2xl font-bold text-center text-indigo-600">
+                        <form onSubmit={handleAddJob} className="text-black grid grid-cols-1 lg:grid-cols-12  gap-4 p-8 rounded-lg shadow-lg shadow-indigo-300 backdrop-blur-2xl">
+                              <h1 className="col-span-full text-2xl font-bold text-center text-indigo-600  divider divider-primary">
                                     Post a Job
                               </h1>
 
@@ -97,12 +111,18 @@ const AddJob = () => {
                                     <select
                                           name="jobType"
                                           required
+                                          defaultValue={'Select Job Type'}
                                           className="input focus:outline-none border-indigo-500 shadow-inner shadow-indigo-200 border-l-4 focus:border-indigo-400 bg-transparent"
                                     >
-                                          <option disabled value="">Select Job Type</option>
+                                          <option disabled value={'Select Job Type'}>Select Job Type</option>
                                           <option value="full-time">Full-Time</option>
                                           <option value="part-time">Part-Time</option>
-                                          <option value="contract">Contract</option>
+                                          <option value="Hybrid">Hybrid</option>
+                                          <option value="Intern">Intern</option>
+                                          <option value="Remote">Remote</option>
+                                          <option value="Contractual">Contractual</option>
+                                          <option value="On-site">On-site</option>
+
                                     </select>
                               </div>
 
@@ -130,10 +150,10 @@ const AddJob = () => {
                               </div>
 
                               {/* Requirements */}
-                              
+
 
                               {/* Responsibilities */}
-                            
+
 
                               {/* Salary Information */}
                               <div className="flex flex-col lg:col-span-4">
@@ -163,9 +183,10 @@ const AddJob = () => {
                                     <select
                                           name="currency"
                                           required
+                                          defaultValue={'Select Currency'}
                                           className="input focus:outline-none border-indigo-500 shadow-inner shadow-indigo-200 border-l-4 focus:border-indigo-400 bg-transparent"
                                     >
-                                          <option disabled value="USD">Select Currency</option>
+                                          <option disabled value={'Select Currency'} >Select Currency</option>
                                           <option value="USD">USD</option>
                                           <option value="EUR">INR</option>
                                           <option value="INR">BDT</option>

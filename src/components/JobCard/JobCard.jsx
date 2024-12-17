@@ -38,7 +38,7 @@ const JobCard = ({ job }) => {
                                     }
                               </div>
 
-                              <div className=" h-full flex">
+                              <div className=" h-fit flex">
                                     <Link to={`/jobdetails/${_id}`} className=" btn w-fit bg-indigo-500 text-white hover:text-indigo-500  mt-3 ">Details</Link>
                               </div>
 

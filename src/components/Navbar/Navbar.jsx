@@ -27,7 +27,7 @@ const Navbar = () => {
                                                 <NavLink to={'/jobs'}>All jobs</NavLink>
                                                 {user && <NavLink to={'/application/me'}>My applications</NavLink>}
                                                 {user && <NavLink to={'/my-jobs'}>My job post</NavLink>}
-                                                {user && <NavLink to={'/add-job'}>Post a job</NavLink>}
+                                                <NavLink to={'/add-job'}>Post a job</NavLink>
                                           </ul>
                                     </div>
                                     <Link className=" flex items-center gap-1">
@@ -40,7 +40,7 @@ const Navbar = () => {
                                     <NavLink to={'/jobs'}>All jobs</NavLink>
                                     {user && <NavLink to={'/application/me'}>My applications</NavLink>}
                                     {user && <NavLink to={'/my-jobs'}>My job post</NavLink>}
-                                    {user && <NavLink to={'/add-job'}>Post a job</NavLink>}
+                                   <NavLink to={'/add-job'}>Post a job</NavLink>
                               </div>
                               <div className="navbar-end gap-2">
                                     {
