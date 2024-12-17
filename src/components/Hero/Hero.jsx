@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import './hero.css'
 import { AuthContext } from "../../context/AuthProvider";
 import { IoCheckmarkDoneSharp } from "react-icons/io5";
-import { FaSearch } from "react-icons/fa";
+
 
 const Hero = () => {
       const { user } = useContext(AuthContext)
@@ -81,16 +81,7 @@ const Hero = () => {
 
 
                               </div>
-                              <div>
-                                    <div>
-                                          <div   className="  banner-text w-fit h-fit  border  overflow-hidden rounded-xl flex-nowrap items-center flex bg-white shadow-lg shadow-indigo-200">
-                                                
-                                               
-                                                <input placeholder="Search job" type="text" className="input w-fit input-sm md:input-md focus:border-none focus:outline-none rounded-none" />
-                                                <button className="btn  md:btn-md btn-sm w-fit focus:border-none rounded-tl-none rounded-bl-none bg-indigo-500 border-none outline-none text-white hover:bg-indigo-600"><FaSearch/> Search</button>
-                                          </div>
-                                    </div>
-                              </div>
+                              
                         </div>
                         <div className=" lg:w-5/12  hidden sm:flex ">
                               <div className=" relative h-fit flex flex-wrap ">

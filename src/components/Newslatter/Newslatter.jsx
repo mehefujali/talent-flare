@@ -20,7 +20,7 @@ const Newslatter = () => {
                               <h1 className=" text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-white">Subscribe our newslatter</h1>
                               <p className=" text-gray-50">New Things Will Always Update Regularl</p>
                               <form onSubmit={handleNewsLatterSignIn} className=" join">
-                                    <input required placeholder='Enter your email' type="email" name="email" id="" className="input join-item focus:outline-none focus:border-none" />
+                                    <input required placeholder='Enter your email' type="email" name="email" id="" className="input w-11/12 join-item focus:outline-none focus:border-none" />
                                     <button className="btn join-item ">Subscribe</button>
                               </form>
                         </div>
