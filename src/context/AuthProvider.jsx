@@ -2,6 +2,7 @@ import { createContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
 import { createUserWithEmailAndPassword, GoogleAuthProvider, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile } from "firebase/auth";
 import { auth } from "../Firebase/firebase.config";
+import axios from "axios";
 // import { signInWithEmailLink } from "firebase/auth/cordova";
 // eslint-disable-next-line react-refresh/only-export-components
 export const AuthContext = createContext()
@@ -20,6 +21,21 @@ const AuthProvider = ({ children }) => {
            
             const unSubscribe = onAuthStateChanged(auth, (currentUser) => {
                   setUser(currentUser)
+                  if(currentUser?.email){
+                        const user = {email : currentUser?.email}
+                        axios.post(`${import.meta.env.VITE_URL}/jwt` , user , {
+                              withCredentials: true
+                        })
+                        .then(res => console.log(res.data)
+                        )
+                  }
+                  else{
+                        axios.post(`${import.meta.env.VITE_URL}/logout` , {} , {
+                              withCredentials: true
+                        })
+                        .then(res => console.log(res.data)
+                        )  
+                  }
                   setLoding(false)
             })
             return () => {
