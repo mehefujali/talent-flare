@@ -5,6 +5,7 @@ import { FaGoogle } from "react-icons/fa";
 import { Link, Navigate, useLocation } from "react-router-dom";
 import { AuthContext } from "../../../context/AuthProvider";
 import toast from "react-hot-toast";
+import axios from "axios";
 
 const Login = () => {
       const { googleSignIn, setUser, user, emailLogin } = useContext(AuthContext)
@@ -48,6 +49,14 @@ const Login = () => {
                         setUser(data.user)
 
                         toast.success(`Login success`)
+                        const user = { email }
+                        axios.post(`${import.meta.env.VITE_URL}/jwt`, user , {
+                              withCredentials: true
+                        })
+                              .then(data => {
+                                    console.log(data.data);
+                                    
+                              })
 
 
                   })

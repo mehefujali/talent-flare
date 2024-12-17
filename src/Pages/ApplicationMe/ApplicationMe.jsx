@@ -1,15 +1,16 @@
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../../context/AuthProvider";
 import { Link } from "react-router-dom";
+import axios from "axios";
 
 const ApplicationMe = () => {
       const [application, setApplication] = useState([])
       const { user } = useContext(AuthContext)
-      useEffect(() => {
-            fetch(`${import.meta.env.VITE_URL}/myapplication?email=${user.email}`)
-                  .then(res => res.json())
-                  .then(data => setApplication(data))
-      })
+      useEffect(()=>{
+            axios.get(`${import.meta.env.VITE_URL}/myapplication?email=${user.email}` , {
+                  withCredentials:true
+            }).then(res =>  setApplication(res.data))
+      },[])
       return (
             <div>
                   <div className="container mx-auto">

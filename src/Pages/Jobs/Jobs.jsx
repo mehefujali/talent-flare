@@ -13,6 +13,14 @@ const Jobs = () => {
                   .then(res => res.json())
                   .then(data => setJobs(data))
       }, [])
+
+      const handleSearch = e => {
+            e.preventDefault()
+            const search = e.target.value
+            fetch(`${import.meta.env.VITE_URL}/alljobs?search=${search}`)
+                  .then(res => res.json())
+                  .then(data => setJobs(data))
+      }
       return (
             <div>
                   <ScrollRestoration></ScrollRestoration>
@@ -20,12 +28,12 @@ const Jobs = () => {
                         <div className="  my-12 text-center h-60 bg-indigo-50 relative flex flex-col justify-center items-center rounded-lg gap-3 bg-no-repeat overflow-hidden shadow-md shadow-indigo-200    bg-contain" id="jobs-banner">
                               <h1 className=" text-xl md:text-2xl xl:text-4xl text-center font-bold ">Browse All Jobs</h1>
                               <p className=" w-full md:w-7/12">Explore a wide range of opportunities tailored to your skills and interests. Find your perfect job and take the next step in your career today!</p>
-                              <div className="  banner-text  h-fit   overflow-hidden rounded-xl flex-nowrap items-center flex mx-auto join  w-11/12  justify-center">
+                              <form  className="  banner-text  h-fit   overflow-hidden rounded-xl flex-nowrap items-center flex mx-auto join  w-11/12  justify-center">
 
 
-                                    <input placeholder="Search job" type="text" className="input  input-sm md:input-md  focus:border-none focus:outline-none w-fit join-item" />
-                                    <button className="btn  md:btn-md btn-sm w-fit focus:border-none  join-item bg-indigo-500 border-none outline-none text-white hover:bg-indigo-600"><FaSearch /> Search</button>
-                              </div>
+                                    <input onChange={handleSearch} name="search" placeholder="Search job" type="text" className="input  input-sm md:input-md  focus:border-none focus:outline-none w-fit join-item" />
+                                    <button  className="btn  md:btn-md btn-sm w-fit focus:border-none  join-item bg-indigo-500 border-none outline-none text-white hover:bg-indigo-600"><FaSearch /> Search</button>
+                              </form>
                               <div  className="   hidden sm:flex right-14 h-56 w-56 xl:h-60 xl:w-60 blur-3xl bg-indigo-500  absolute   opacity-60 ">
 
                               </div>
