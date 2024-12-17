@@ -5,22 +5,26 @@ import { IoBag, IoLocationOutline } from "react-icons/io5";
 import { MdDone } from "react-icons/md";
 
 import { SlCalender } from "react-icons/sl";
-import {  ScrollRestoration, useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { ScrollRestoration, useLoaderData, useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
+import axios from "axios";
 
 
 const JobDetails = () => {
       const [application, setApplication] = useState([])
-      const { user,setLoding } = useContext(AuthContext)
+      const { user } = useContext(AuthContext)
       const { id } = useParams()
       const navigate = useNavigate()
       useEffect(() => {
-            setLoding(true)
-            fetch(`${import.meta.env.VITE_URL}/myapplication?email=${user.email}`)
-                  .then(res => res.json())
-                  .then(data => setApplication(data))
-                  setLoding(false)
-      })
+
+            axios.get(`${import.meta.env.VITE_URL}/myapplication?email=${user.email}`, {
+                  withCredentials: true
+            })
+                  .then(res => {
+                        setApplication(res.data)
+                  })
+
+      }, [user.email])
       const userJob = application.find(job => job.job_id === id)
       const job = useLoaderData()
       const { title, location, jobType, category, applicationDeadline, salaryRange, requirements, status, company_logo, description, responsibilities, _id } = job
@@ -61,16 +65,16 @@ const JobDetails = () => {
                                     <p>{description}</p>
 
                               </div>
-                              {userJob&&<div className=" ">
+                              {userJob && <div className=" ">
                                     <div className="divider">Your Application</div>
                                     <p className="text-black">linkedinURL: <a className=" underline" href={userJob.linkedinURL}>{userJob.linkedinURL}</a></p>
                                     <p className="text-black">Resume: <a className=" underline" href={userJob.resume}>{userJob.resume}</a></p>
                                     <p className="text-black">Comment : {userJob.comment}</p>
-                                    </div>}
-                              {userJob?<button onClick={()=>navigate(`/application/me`)}   to={`/applyjob/${_id}`} className=" btn bg-indigo-500 w-full mt-5 hover:text-indigo-500 text-white rounded-md"><MdDone className=""></MdDone> {"Go to my Application"}</button>:
-                              <button onClick={()=>navigate(`/applyjob/${_id}`)}   to={`/applyjob/${_id}`} className=" btn bg-indigo-500 w-full mt-5 hover:text-indigo-500 text-white rounded-md"><MdDone className=""></MdDone> {"Apply"}</button>}
+                              </div>}
+                              {userJob ? <button onClick={() => navigate(`/application/me`)} to={`/applyjob/${_id}`} className=" btn bg-indigo-500 w-full mt-5 hover:text-indigo-500 text-white rounded-md"><MdDone className=""></MdDone> {"Go to my Application"}</button> :
+                                    <button onClick={() => navigate(`/applyjob/${_id}`)} to={`/applyjob/${_id}`} className=" btn bg-indigo-500 w-full mt-5 hover:text-indigo-500 text-white rounded-md"><MdDone className=""></MdDone> {"Apply"}</button>}
+                        </div>
                   </div>
-            </div>
             </div >
       );
 };

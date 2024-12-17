@@ -10,7 +10,7 @@ const ApplicationMe = () => {
             axios.get(`${import.meta.env.VITE_URL}/myapplication?email=${user.email}` , {
                   withCredentials:true
             }).then(res =>  setApplication(res.data))
-      },[])
+      },[user.email])
       return (
             <div>
                   <div className="container mx-auto">

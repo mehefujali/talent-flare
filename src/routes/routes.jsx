@@ -29,7 +29,7 @@ const routes = createBrowserRouter([
                   },
                   {
                         path: 'jobdetails/:id',
-                        loader: ({ params }) => fetch(`http://localhost:8080/jobs/${params.id}`),
+                        loader: ({ params }) => fetch(`${import.meta.env.VITE_URL}/jobs/${params.id}`),
                         element: <PrivateRoute>
                               <JobDetails></JobDetails>
                         </PrivateRoute>
