@@ -26,17 +26,21 @@ const AuthProvider = ({ children }) => {
                         axios.post(`${import.meta.env.VITE_URL}/jwt` , user , {
                               withCredentials: true
                         })
-                        .then(res => console.log(res.data)
+                        .then(() => {
+                              setLoding(false)
+                        }
                         )
                   }
                   else{
                         axios.post(`${import.meta.env.VITE_URL}/logout` , {} , {
                               withCredentials: true
                         })
-                        .then(res => console.log(res.data)
+                        .then(() =>{
+                              setLoding(false)
+                        }
                         )  
                   }
-                  setLoding(false)
+                 
             })
             return () => {
                   unSubscribe()
@@ -53,7 +57,7 @@ const AuthProvider = ({ children }) => {
       }
       // const newsLatterSignIn = (email) => {
             
-      //       console.log(email);
+      //       (email);
       //       return signInWithEmailLink(auth, email, window.location.href("https://mail.google.com"))
                   
                   

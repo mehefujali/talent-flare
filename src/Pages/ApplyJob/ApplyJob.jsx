@@ -2,6 +2,7 @@ import { useContext } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { AuthContext } from "../../context/AuthProvider";
 import Swal from "sweetalert2";
+import axios from "axios";
 
 const ApplyJob = () => {
       const { user } = useContext(AuthContext)
@@ -21,16 +22,12 @@ const ApplyJob = () => {
                   resume,
                   comment,
             }
-            fetch(`${import.meta.env.VITE_URL}/job-application`, {
-                  method: 'POST',
-                  headers: {
-                        'content-type': 'application/json'
-                  },
-                  body: JSON.stringify(jobApplication)
-            })
-                  .then(res => res.json())
+         
+            
+            axios.post(`${import.meta.env.VITE_URL}/job-application`, jobApplication)
+
                   .then(data => {
-                        if (data.insertedId) {
+                        if (data.data.insertedId) {
                               Swal.fire({
                                     position: "center",
                                     icon: "success",

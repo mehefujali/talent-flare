@@ -9,7 +9,7 @@ import './nav.css'
 const Navbar = () => {
 
       const { user, signOutUser } = useContext(AuthContext)
-     
+
 
       return (
             <div className="">
@@ -23,10 +23,11 @@ const Navbar = () => {
                                           <ul
                                                 tabIndex={0}
                                                 className="menu menu-sm bg-white dropdown-content backdrop:blur-xl text-nowrap rounded w-fit z-[1] mt-3  p-3   shadow-md shadow-indigo-200 flex-col gap-2">
-                                                <NavLink to={'/'}>Home</NavLink>
+                                                <NavLink to={'/'}> Home</NavLink>
                                                 <NavLink to={'/jobs'}>All jobs</NavLink>
-                                                <NavLink to={'/application/me'}>My applications</NavLink>
-                                                <NavLink to={'/my-jobs'}>My job post</NavLink>
+                                                {user && <NavLink to={'/application/me'}>My applications</NavLink>}
+                                                {user && <NavLink to={'/my-jobs'}>My job post</NavLink>}
+                                                {user && <NavLink to={'/add-job'}>Post a job</NavLink>}
                                           </ul>
                                     </div>
                                     <Link className=" flex items-center gap-1">
@@ -39,6 +40,7 @@ const Navbar = () => {
                                     <NavLink to={'/jobs'}>All jobs</NavLink>
                                     {user && <NavLink to={'/application/me'}>My applications</NavLink>}
                                     {user && <NavLink to={'/my-jobs'}>My job post</NavLink>}
+                                    {user && <NavLink to={'/add-job'}>Post a job</NavLink>}
                               </div>
                               <div className="navbar-end gap-2">
                                     {

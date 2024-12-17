@@ -54,7 +54,7 @@ const Login = () => {
                               withCredentials: true
                         })
                               .then(data => {
-                                    console.log(data.data);
+                                    (data.data);
                                     
                               })
 
