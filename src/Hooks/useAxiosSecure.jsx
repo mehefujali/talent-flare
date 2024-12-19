@@ -15,7 +15,7 @@ const useAxiosSecure = () => {
               return response
             } , 
             err => {
-                  console.log('err n ', err)
+                  
                   if (err.status === 401 || err.status === 403) {
                         signOutUser()
                   }
