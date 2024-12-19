@@ -20,16 +20,30 @@ const JobPost = () => {
       }, [user.email, axiosSecure])
 
       const handleDeleteJob = (id) => {
-            axiosSecure.delete(`/myjobs?id=${id}`)
-                  .then(res => {
-                        if (res.data.deletedCount) {
-                              Swal.fire({
-                                    title: "Job deleted!",
-                                    // text: "You clicked the button!",
-                                    icon: "success"
-                                  });
-                        }
-         })
+            Swal.fire({
+                  title: "Are you sure?",
+                  text: "You won't to delete this job ?",
+                  icon: "warning",
+                  showCancelButton: true,
+                  confirmButtonColor: " #d33",
+                  cancelButtonColor: "#6868f2",
+                  confirmButtonText: "Delete"
+            }).then((result) => {
+                  if (result.isConfirmed) {
+                        axiosSecure.delete(`/myjobs?id=${id}`)
+                              .then(res => {
+                                    if (res.data.deletedCount) {
+                                          Swal.fire({
+                                                title: "Deleted!",
+                                                text: "Your job has been deleted.",
+                                                icon: "success"
+                                          });
+                                          setJobs(jobs.filter(job => job._id !== id))
+                                    }
+                              })
+                  }
+            });
+
       }
       return (
             <div>
