@@ -1,11 +1,15 @@
 import axios from "axios";
+import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
+import { AuthContext } from "../../context/AuthProvider";
 
 
 const AddJob = () => {
       const navigate = useNavigate()
+      const { user } = useContext(AuthContext)
       const handleAddJob = e => {
+
             e.preventDefault()
             const formData = new FormData(e.target)
 
@@ -13,24 +17,26 @@ const AddJob = () => {
             const { min, max, currency, ...newJob } = initialData
             newJob.salaryRange = { min, max, currency }
 
-            newJob.requirements = newJob.requirements.split('/n')
-            newJob.responsibilities = newJob.responsibilities.split('/n')
+            newJob.requirements = newJob.requirements.split('\n');
+            newJob.responsibilities = newJob.responsibilities.split('\n')
             newJob.status = 'active'
+            newJob.userEmail = user.email
+            console.log(newJob);
 
             axios.post(`${import.meta.env.VITE_URL}/addjobs`, newJob)
                   .then(res => {
-                        if (res.data.insertedId){
+                        if (res.data.insertedId) {
                               Swal.fire({
                                     position: "center",
                                     icon: "success",
                                     title: "New job added",
                                     showConfirmButton: false,
                                     timer: 1500
-                                  });
-                                navigate('/my-jobs')
+                              });
+                              navigate('/my-jobs')
                         }
-                  
-            })
+
+                  })
 
       }
       return (

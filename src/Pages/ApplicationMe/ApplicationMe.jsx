@@ -8,14 +8,14 @@ const ApplicationMe = () => {
       const axiosSecure = useAxiosSecure()
       const [application, setApplication] = useState([])
       const { user } = useContext(AuthContext)
-      useEffect(()=>{
+      useEffect(() => {
             axiosSecure.get(`/myapplication?email=${user.email}`)
-            .then(res =>  setApplication(res.data))
-      },[user.email , axiosSecure])
+                  .then(res => setApplication(res.data))
+      }, [user.email, axiosSecure])
       return (
             <div>
                   <div className="container mx-auto">
-                  <div className=" my-12">
+                        <div className=" my-12">
                               <h1 className=" text-xl md:text-2xl xl:text-4xl text-center font-bold divider divider-primary">My applications</h1>
                         </div>
                         <div className="overflow-x-auto">
@@ -68,7 +68,7 @@ const ApplicationMe = () => {
 
                               </table>
                         </div>
-            </div>
+                  </div>
             </div >
       );
 };
