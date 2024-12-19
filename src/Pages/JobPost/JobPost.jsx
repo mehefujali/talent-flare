@@ -5,23 +5,35 @@ import { Link } from "react-router-dom";
 import { FaInfo } from "react-icons/fa";
 import { MdDeleteOutline } from "react-icons/md";
 import { BiSolidEdit } from "react-icons/bi";
+import Swal from "sweetalert2";
 
 const JobPost = () => {
-     const axiosSecure = useAxiosSecure()
-     const {user} = useContext(AuthContext)
-     const [jobs , setJobs]= useState([])
-     useEffect(()=>{
-      axiosSecure.get(`/myjobs?email=${user.email}`)
-      .then(res => {
-            setJobs(res.data);
-            
-      })
-     },[user.email , axiosSecure])
+      const axiosSecure = useAxiosSecure()
+      const { user } = useContext(AuthContext)
+      const [jobs, setJobs] = useState([])
+      useEffect(() => {
+            axiosSecure.get(`/myjobs?email=${user.email}`)
+                  .then(res => {
+                        setJobs(res.data);
 
-      console.log(jobs)
+                  })
+      }, [user.email, axiosSecure])
+
+      const handleDeleteJob = (id) => {
+            axiosSecure.delete(`/myjobs?id=${id}`)
+                  .then(res => {
+                        if (res.data.deletedCount) {
+                              Swal.fire({
+                                    title: "Job deleted!",
+                                    // text: "You clicked the button!",
+                                    icon: "success"
+                                  });
+                        }
+         })
+      }
       return (
             <div>
-                   <div className="container mx-auto">
+                  <div className="container mx-auto">
                         <div className=" my-12">
                               <h1 className=" text-xl md:text-2xl xl:text-4xl text-center font-bold divider divider-primary">My Posted Jobs</h1>
                         </div>
@@ -65,8 +77,8 @@ const JobPost = () => {
                                                       </td>
                                                       <td>{job.applicationDeadline}</td>
                                                       <th className=" flex  gap-2">
-                                                            <Link to={`/jobdetails/${job._id}`} className="btn  btn-circle btn-sm"><FaInfo/></Link>
-                                                            <Link to={`/jobdetails/${job._id}`} className="btn  text-red-600 btn-circle btn-sm"><MdDeleteOutline /></Link>
+                                                            <Link to={`/jobdetails/${job._id}`} className="btn  btn-circle btn-sm"><FaInfo /></Link>
+                                                            <button onClick={() => handleDeleteJob(job._id)} className="btn  text-red-600 btn-circle btn-sm"><MdDeleteOutline /></button>
                                                             <Link to={`/jobdetails/${job._id}`} className="btn  btn-circle btn-sm"><BiSolidEdit /></Link>
 
                                                       </th>
