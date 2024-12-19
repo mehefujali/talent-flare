@@ -22,7 +22,7 @@ const useAxiosSecure = () => {
                   return Promise.reject(err)
             }
       )
-      },[])
+      },[signOutUser])
       return axiosInstance
 };
 
