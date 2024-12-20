@@ -93,7 +93,7 @@ const JobPost = () => {
                                                       <th className=" flex  gap-2">
                                                             <Link to={`/jobdetails/${job._id}`} className="btn  btn-circle btn-sm"><FaInfo /></Link>
                                                             <button onClick={() => handleDeleteJob(job._id)} className="btn  text-red-600 btn-circle btn-sm"><MdDeleteOutline /></button>
-                                                            <Link to={`/jobdetails/${job._id}`} className="btn  btn-circle btn-sm"><BiSolidEdit /></Link>
+                                                            <Link to={`/update-job/${job._id}`} className="btn  btn-circle btn-sm"><BiSolidEdit /></Link>
 
                                                       </th>
                                                 </tr>)
